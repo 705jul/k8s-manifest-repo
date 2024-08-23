@@ -20,3 +20,24 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 80
+---            
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: delete-old-replicasets
+  labels:
+    app: demo-frontend
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+spec:
+  template:
+    spec:
+      containers:
+      - name: delete-replicasets
+        image: bitnami/kubectl:latest
+        command:
+        - sh
+        - -c
+        - |
+          kubectl delete replicaset -l app=demo-frontend --ignore-not-found=true --field-selector=status.replicas=0
+      restartPolicy: Never
