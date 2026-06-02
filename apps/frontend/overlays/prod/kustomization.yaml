@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: eks-demo-app
+
+resources:
+  - ../../base
+
+images:
+  - name: frontend
+    newName: 752140197346.dkr.ecr.ap-northeast-2.amazonaws.com/eks-demo-frontend
+    newTag: initial
