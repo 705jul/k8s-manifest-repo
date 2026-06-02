@@ -4,9 +4,9 @@ kind: Kustomization
 namespace: eks-demo-app
 
 resources:
-  - ../../base
+- ../../base
 
 images:
-  - name: frontend
-    newName: 752140197346.dkr.ecr.ap-northeast-2.amazonaws.com/eks-demo-frontend
-    newTag: initial
+- name: frontend
+  newName: 752140197346.dkr.ecr.ap-northeast-2.amazonaws.com/eks-demo-frontend
+  newTag: front-20260602072946-ea1e43f-ff2298e3
